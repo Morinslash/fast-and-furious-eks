@@ -1,0 +1,7 @@
+# Example variables for Terraform configuration
+
+# AWS CLI profile to use:
+profile = "your-aws-profile"
+
+# AWS region to deploy resources in:
+region = "us-east-1"
