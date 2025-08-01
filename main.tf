@@ -18,3 +18,21 @@ module "vpc" {
   })
 }
 
+module "eks" {
+  source = "./eks"
+
+  cluster_name        = var.cluster_name
+  vpc_id              = module.vpc.vpc_id
+  subnet_ids          = module.vpc.private_subnet_ids
+  node_instance_type  = var.node_instance_type
+  desired_nodes       = var.desired_nodes
+  kubernetes_version  = var.kubernetes_version
+  public_access_cidrs = var.public_access_cidrs
+
+  tags = merge(var.tags, {
+    Owner        = local.owner_email,
+    ResourceType = "compute"
+  })
+
+  depends_on = [module.vpc]
+}

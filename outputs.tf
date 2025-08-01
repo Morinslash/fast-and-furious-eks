@@ -13,3 +13,18 @@ output "private_subnet_ids" {
   description = "IDs of the private subnets created"
 }
 
+output "cluster_endpoint" {
+  description = "EKS cluster endpoint"
+  value       = module.eks.cluster_endpoint
+}
+
+output "cluster_name" {
+  description = "EKS cluster name"
+  value       = module.eks.cluster_name
+}
+
+# Command to update kubeconfig
+output "update_kubeconfig" {
+  description = "Command to update kubeconfig"
+  value       = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
+}

@@ -13,3 +13,6 @@ availability_zone   = "us-east-1a"
 tags = {
   ManagedBy = "terraform"
 }
+
+kubernetes_version  = "1.33"
+public_access_cidrs = ["0.0.0.0/32"] # change to your IP
